@@ -1,0 +1,112 @@
+---
+title: "Assignment2"
+author: "Joshua Registe"
+date: "9/4/2020"
+output: html_document
+---
+
+Problem Set 1
+
+(1) Show that AT A 6= AAT in general. (Proof and demonstration.)
+
+The following example will compute a Matrix A, and the transpose of that matrix and check for equality
+```{r}
+library(matlib)
+
+A<-matrix(c(1,7,4,63,6,7,2,9,67),nrow = 3)
+A_T<-t(A)
+
+A_T%*%A == A%*%A_T
+
+```
+The example shows that AT*A is not equal to A*AT
+
+(2) For a special type of square matrix A, we get AT A = AAT. Under what conditions
+could this be true? (Hint: The Identity matrix I is an example of such a matrix).
+
+The condition will be true if the matrices are symstrical or identity matrices.
+
+```{r}
+
+A<- matrix(c(3,1,2,1,3,1,2,1,3),nrow =3)
+A
+
+A_T<-t(A)
+
+
+A_T%*%A == A%*%A_T
+```
+
+
+
+Problem Set 2
+
+Matrix factorization is a very important problem. There are supercomputers built just
+to do matrix factorization. Every second you are on an airplane, matrices are being
+factorized. Radars that track flights use a technique called Kalman filtering. At the heart
+of Kalman Filtering is a Matrix Factorization operation. Kalman Filters are solving linear
+systems of equations when they track your flight using radars.
+Write an R function to factorize a square matrix A into LU or LDU, whichever you
+prefer. 
+
+You don’t have to worry about permuting rows of A and you can assume that A is less
+than 5x5, if you need to hard-code any variables in your code. If you doing the entire
+assignment in R, then please submit only one markdown document for both the problems.
+
+
+We create function and return an error if the matrix is too large (greater than 5x5) or the matrix is not a square matrix (nrow = ncol).
+
+```{r}
+library(matrixcalc)
+library(Matrix)
+
+
+LU_function <- function(Mat){
+  if(nrow(Mat)>= 5) {
+    return("Matrix too large")
+  }
+  
+  if(is.square.matrix(Mat) == FALSE) {
+    return("Matrix not square")
+  }
+  
+  n <- dim(Mat)[1]
+  L <- diag(n)
+  start <- 0
+  
+  while (start <= dim(Mat)[1]){
+  start = start+1
+  i = start
+  j = start
+  while (i <= dim(Mat)[1]-1){
+    c = Mat[i+1,j]/Mat[j,j]
+    Mat[i+1,] = Mat[i+1,]-c*Mat[j,]
+    L[i+1,j] = c
+    i = 1+i
+  }
+
+  }
+  return(L)
+}
+
+
+```
+In order to test the function:
+
+```{r}
+
+testmatrix <- matrix(c(5,34,3,-32,4,66,3,1,9), nrow=3, byrow=TRUE)
+(LU <- LU_function(testmatrix))
+
+```
+We can compare this with R's built in function lu.decomposition
+```{r}
+lu.decomposition(testmatrix)[1]
+
+lu.decomposition(testmatrix)[[1]]==LU
+```
+
+
+
+
+ 
