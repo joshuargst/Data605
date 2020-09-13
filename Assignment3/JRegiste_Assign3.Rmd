@@ -1,0 +1,72 @@
+---
+title: "Assignment 3"
+author: "Joshua Registe"
+date: "9/12/2020"
+output: html_document
+---
+
+
+
+# Problem Set 1
+
+1) What is the rank of the Matrix A?
+
+```{r}
+(A<-matrix(c(1,-1,0,5,
+            2,0,1,4,
+            3,1,-2,-2,
+            4,3,1,-2), nrow =4))
+
+
+qr(A)$rank
+```
+2) Given an mxn matrix where m>n, what can be the maximum rank? the minimum rank? assuming that the matrix is non-zero.
+
+<br><br>
+The maximum rank of a matrix where m>n assuming non-zero matrix is n, the miminum rank will 1 as long as a matrix has at least 1 element
+<br>
+
+3) What is the rank of matrix B?
+
+```{r}
+(B<-matrix(c(1,3,2,
+            2,6,4,
+            1,3,2),nrow = 3))
+
+qr(B)$rank
+```
+
+# Problem Set 2
+
+
+Compute the eigenvalues and eigenvectors of the matrix A. You'll need to show your work.
+
+$$A = \begin{bmatrix} 
+1  & 2 & 3\\ 
+0 & 4 & 5\\ 
+0 & 0 & 6\\ 
+\end{bmatrix}$$
+
+The rule of Sarros describes the characteristic equation for our given matrix as:
+
+
+$$|A-\lambda I| = 0 = det \begin{bmatrix} 
+1-\lambda  & 2 & 3\\ 
+0 & 4-\lambda & 5\\ 
+0 & 0 & 6-\lambda\\ 
+\end{bmatrix}$$
+
+meaning that our expected eigen values are 1, 4, and 6. We can compute the eigen vector as:
+
+```{r}
+
+A<-matrix(c(1,0,0,
+            2,4,0,
+            3,5,6), nrow =3)
+
+eigen(A)
+
+
+```
+
+
