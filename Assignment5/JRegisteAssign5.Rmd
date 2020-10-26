@@ -1,0 +1,150 @@
+---
+title: "DATA 605 HW 5"
+author: "Joshua Registe"
+date: "9/27/2020"
+output: html_document
+---
+
+Choose independently two numbers B and C at random from the interval [0, 1] with uniform density. Prove that B and C are proper probability distributions. Note that the point (B,C) is then chosen at random in the unit square.
+
+Find the probability that<br>
+
+## (a) B + C < 1/2
+
+B and C are have the boundary interval [0,1]and are independent and thus:
+
+Lets let B=x and C=y
+$$
+f(B,C)=f(b)f(c)
+$$
+
+We define our probability as follows: 
+$$
+P(B+C<1/2)=p(b+c<1/2)\\
+$$
+We can define b in terms of c as 
+$$
+c<1/2-b
+$$
+
+We define our double integral as follows:
+$$
+=\int _{ 0 }^{ 1/2 } \int _{ 0 }^{ 1/2 -b }f(b,c)dbdc
+$$
+
+f(b,c)=1
+
+$$
+=\int _{ 0 }^{ 1/2 } \int _{ 0 }^{ 1/2 -b }1dbdc
+$$
+
+Following standard calculus, we evaluate the inner and outer intergrals with respect to be and c
+$$
+=\int _{ 0 }^{ 1/2 } ((\frac{1}{2}-b)-0)db\\
+=\int _{ 0 }^{ 1/2 } (\frac{1}{2}-b)db\\
+=((\frac{1}{2} )(\frac{1}{2})-\frac{(\frac{1}{2})^{2}}{2})-(0-0)\\
+=\frac{1}{4}-\frac{1}{8}\\
+=\frac{1}{8}\\
+p(B+C<1/2)=\frac{1}{8}
+$$
+
+## (b) BC < 1/2
+
+for this problem we dont need double intergration. it is solved as below 
+
+$$
+BC<\frac{1}{2}
+$$
+
+
+$$
+xy<\frac{1}{2}
+$$
+
+
+$$
+y<\frac{1}{2b}
+$$
+
+We set up our integrals as follows:
+$$
+=\frac{1}{2}+\int _{ 1/2 }^{ 1 } \int _{ 0 }^{ 1/2b }f(b,c)dcdb
+$$
+We pretty much divide our region into two parts taking the area of x from 0 to y=1/2x using geometry and 1/2 to 1. The points of intersection would be (1/2,1) and (1,1/2)
+
+$$
+=\frac{1}{2}+\int _{ 1/2 }^{ 1}(\frac{1}{2b})db
+$$
+
+$$
+=\frac{1}{2}+\frac{1}{2}[ln(1)-ln(\frac{1}{2})]
+$$
+$$
+=\frac{1}{2}+\frac{1}{2}[0-ln(\frac{1}{2})]\\
+=\frac{1}{2}+\frac{1}{2}[ln(\frac{1}{2})]
+$$
+If you punch this into a calculator, the probability is roughly .8
+
+Hence, we have found the probability of BC<1/2
+
+
+## (C) |B - C| < 1/2
+
+$$
+|B-C|<1/2
+$$
+
+Using the definition of absolute value, we consider C to be the lines C=B+1/2 and C=B-1/2 and since the interesection forms a right triangle, we can use the triangle area formula to aid in this computation.
+The base has a unit length of 1/2 and the length is 1 unit
+
+$$
+1-2A(triangle)\\
+1-2\frac{1}{2}bh\\
+1-2(\frac{1}{2}(\frac{1}{2})(\frac{1}{2}))\\
+=\frac{3}{4}
+$$
+
+This is what is happening geometrically 
+$$
+|B-C|<1/2\\
+C=B+1/2\\
+C=B-1/2
+$$
+
+
+
+## d) max{B,C} < 1/2.
+
+we need to compute maximum of function items to compute
+$$
+Z=max(B,C)<1/2
+$$
+
+We can re-write as 
+$$
+P(B\le\frac{1}{2},C\le\frac{1}{2})
+$$
+Just by inference, if the max of the product BC are less than a half, then we can assume that B and C are both going to be less than or equal to a half. 
+
+$$
+1-P(B\le\frac{1}{2})P(C\le\frac{1}{2})=(\frac{1}{2})(\frac{1}{2})=\frac{1}{4}
+$$
+
+
+
+## (e) min{B,C} < 1/2.
+
+$$
+Z=min(B,C)<1/2
+$$
+
+
+$$
+P(B\ge\frac{1}{2},C\ge\frac{1}{2})\\
+=1-[1-P(B\le\frac{1}{2})][1-P(C\le\frac{1}{2})]\\
+=1-[1-\frac{1}{2}][1-\frac{1}{2}]\\
+=1-[\frac{1}{2}][\frac{1}{2}]\\
+=1-\frac{1}{4}\\
+=\frac{3}{4}
+$$
+
